@@ -43,7 +43,14 @@ class UserService implements UserServiceInterface
 
     public function login(string $username, string $password): ?UserDTO
     {
-        // TODO: Implement login() method.
+        $user = $this->userRepository->findOneByUsername($username);
+        if( $user === null){
+            return null;
+        }
+        if($this->encryptionService->verify($password, $user->getPassword()) === null){
+            return null;
+        }
+        return $user;
     }
 
     public function edit(UserDTO $user): bool
@@ -53,12 +60,18 @@ class UserService implements UserServiceInterface
 
     public function currentUser(): ?UserDTO
     {
-        // TODO: Implement currentUser() method.
+        if(!$_SESSION['id']){
+            return null;
+        }
+        return $this->userRepository->findOneById(intval($_SESSION['id']));
     }
 
     public function isLogged(): bool
     {
-        // TODO: Implement isLogged() method.
+        if($this->currentUser() === null){
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -66,6 +79,6 @@ class UserService implements UserServiceInterface
      */
     public function getAll(): Generator
     {
-        // TODO: Implement getAll() method.
+       return $this->userRepository->findAll();
     }
 }
