@@ -53,15 +53,19 @@ class UserService implements UserServiceInterface
         return $user;
     }
 
-    public function edit(UserDTO $user): bool
+    public function edit(UserDTO $user, bool $hasChangedPassword): bool
     {
         //if we  have that username in the db
-        if(null !== $this->userRepository->findOneByUsername($user->getUsername())){
+        if(null !== $this->userRepository->findOneByUsername($user->getUsername()) &&
+            $this->currentUser()->getUsername() !== $user->getUsername()){
             return false;
         }
-        $plainPass = $user->getPassword();
-        $encryptedPass = $this->encryptionService->hash($plainPass);
-        $user->setPassword($encryptedPass);
+        if($hasChangedPassword){
+            $plainPass = $user->getPassword();
+            $encryptedPass = $this->encryptionService->hash($plainPass);
+            $user->setPassword($encryptedPass);
+        }
+
 
         return $this->userRepository->update(intval($_SESSION['id']),$user);
     }

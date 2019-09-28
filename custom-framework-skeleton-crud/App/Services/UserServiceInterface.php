@@ -11,7 +11,7 @@ interface UserServiceInterface
 {
     public function register(UserDTO $user, string $confirmPassword) :bool;
     public function login(string $username, string $password):?UserDTO;
-    public function edit(UserDTO $user):bool;
+    public function edit(UserDTO $user, bool $hasChangedPassword):bool;
     public function currentUser() :?UserDTO;
     public function isLogged() :bool;
 

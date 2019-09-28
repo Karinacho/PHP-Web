@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  background-color: #cbcbcb;
+  font-family: "Lato", sans-serif; }
+
+div.index {
+  margin-top: 2em; }
+  div.index h2 {
+    text-align: center; }
+  div.index p {
+    text-align: center; }
+
+div.login, div.register, div.edit {
+  -webkit-box-shadow: 11px 10px 38px 4px gray;
+  -moz-box-shadow: 11px 10px 38px 4px gray;
+  box-shadow: 11px 10px 38px 4px gray;
+  margin: 5em auto;
+  max-width: 300px;
+  border: 1px solid darkgrey;
+  padding: 1em 3em;
+  background-color: floralwhite; }
+  div.login form, div.register form, div.edit form {
+    display: flex;
+    flex-flow: column; }
+  div.login input, div.register input, div.edit input {
+    border: 0.5px solid lightgrey;
+    border-radius: 0.5em;
+    padding: 0.7em;
+    width: 100%; }
+  div.login input[type="submit"], div.register input[type="submit"], div.edit input[type="submit"] {
+    width: 5em;
+    border-radius: 3em;
+    padding: 0.4em;
+    background-color: orange;
+    color: white;
+    margin-left: auto; }
+
+/*# sourceMappingURL=style.css.map */

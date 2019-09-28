@@ -84,9 +84,16 @@ class UserHttpHandler extends UserHttpHandlerAbstract
 
     private function handleEditProcess(UserServiceInterface $userService, array $formData)
     {
+        $hasChangedPassword = true;
         //we need to take the data from the formData and insert it into the user's data
+        if($formData['password'] ==='' && $formData['confirm_password'] === ''){
+            $formData['password'] = $userService->currentUser()->getPassword();
+            $formData['confirm_password'] = $userService->currentUser()->getPassword();
+            $hasChangedPassword = false;
+        }
+
         $user = $this->dataBinder->bind($formData,UserDTO::class);
-        if($userService->edit($user)){
+        if($userService->edit($user,$hasChangedPassword)){
             $this->redirect('profile.php');
         }
 

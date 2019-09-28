@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+$body-primary-color: rgb(203, 203, 203);
+$primary-font: 'Lato', sans-serif;
+$form-background: floralwhite;
+html{
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+*,*:before, *:after{
+  box-sizing: inherit;
+}
+body{
+  background-color: $body-primary-color;
+  font-family: $primary-font;
+}
+div.index{
+  margin-top: 2em;
+    h2{
+      text-align: center;
+    }
+  p{
+    text-align: center;
+  }
+
+}
+div.login,div.register, div.edit{
+  -webkit-box-shadow: 11px 10px 38px 4px rgba(128,128,128,1);
+  -moz-box-shadow: 11px 10px 38px 4px rgba(128,128,128,1);
+  box-shadow: 11px 10px 38px 4px rgba(128,128,128,1);
+  margin: 5em auto;
+  max-width: 300px;
+  border: 1px solid darkgrey;
+  padding: 1em 3em;
+  background-color: $form-background ;
+  form{
+    display:flex;
+    flex-flow: column;
+  }
+  input{
+     border:0.5px solid lightgrey;
+     border-radius: 0.5em;
+     padding: 0.7em;
+     width: 100%;
+
+  }
+  input[type="submit"]{
+    width: 5em;
+    border-radius: 3em;
+    padding: 0.4em;
+    background-color: orange;
+    color:white;
+    margin-left: auto;
+  }
+}
