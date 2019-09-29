@@ -47,6 +47,33 @@ nav.navbar {
   nav.navbar ul.profile-info {
     margin-left: auto; }
 
+div.main-banners {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); }
+  div.main-banners h2.centered {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  div.main-banners div.image-container {
+    position: relative;
+    overflow: hidden;
+    height: 300px; }
+  div.main-banners img {
+    width: auto;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: brightness(70%); }
+  div.main-banners img.portrait {
+    width: 100%;
+    height: auto;
+    top: 38%; }
+
 div.profile h2 {
   text-align: center; }
 div.profile ul {

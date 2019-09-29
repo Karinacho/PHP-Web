@@ -14,6 +14,7 @@ class UserDTO
     private $firstName;
     private $lastName;
     private $bornOn;
+
     private $moneyAmount;
 
 

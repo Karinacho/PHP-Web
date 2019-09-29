@@ -18,6 +18,7 @@
         <li><a href="editProfile.php">Edit Profile Info</a></li>
         <li><a href="basket.php">Basket</a></li>
         <li><a href="depositMoney.php">Deposit more money</a></li>
+        <li><a href="logout.php">Logout</a></li>
     </ul>
     <div class="user-info">
         <p class="amount-left">AMOUNT LEFT: <?=$data->getMoneyAmount() ?> lv</p>

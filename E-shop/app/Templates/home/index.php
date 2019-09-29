@@ -32,6 +32,17 @@
             </nav>
 
         </header>
+        <main class="main-content">
+            <div class="main-banners">
+                <div class="image-container"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"><h2 class="centered">Clothes</h2></div>
+                <div class="image-container"><img class="portrait"src="https://images.unsplash.com/photo-1518049362265-d5b2a6467637?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=687&q=80"><h2 class="centered">Shoes</h2></div>
+                <div class="image-container"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"><h2 class="centered">Dresses</h2></div>
+                <div class="image-container"><img src="https://images.unsplash.com/photo-1560158623-9669b8879c8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"><h2 class="centered">Watches</h2></div>
+            </div>
+            <div class="new-products">
+                <h4>New products</h4>
+            </div>
+        </main>
         <div></div>
         <div></div>
         <div></div>

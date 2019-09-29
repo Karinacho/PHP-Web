@@ -66,4 +66,31 @@ class UserService implements UserServiceInterface
             return $this->userRepository->findOneById($_SESSION['id']);
 
     }
+
+    public function edit(UserDTO $user, $confirmPassword): bool
+    {
+        if($this->userRepository->findOneByUsername($user->getUsername()) !== null &&
+          $this->userRepository->findOneByUsername($user->getUsername() !== $this->currentUser()->getUsername())){
+            return false;
+        }
+        else if($user->getPassword() !== $confirmPassword){
+            return false;
+        }
+        else{
+            $user->setMoneyAmount($this->currentUser()->getMoneyAmount());
+            if($user->getPassword()=== ''){
+                $user->setPassword($this->currentUser()->getPassword());
+            }
+            else{
+
+                $plainPass = $user->getPassword();
+                $hashedPass = password_hash($user->getPassword(),PASSWORD_ARGON2I);
+                $user->setPassword($hashedPass);
+            }
+
+            return  $this->userRepository->update($this->currentUser()->getId(),$user);
+
+        }
+
+    }
 }

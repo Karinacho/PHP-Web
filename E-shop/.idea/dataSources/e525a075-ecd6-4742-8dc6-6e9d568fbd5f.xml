@@ -1527,9 +1527,9 @@
     </column>
     <column id="373" parent="336" name="money_amount">
       <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>decimal(10,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>500</DefaultExpression>
+      <DefaultExpression>500.00</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="374" parent="336" name="username">

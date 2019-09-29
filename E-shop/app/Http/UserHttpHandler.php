@@ -6,6 +6,7 @@ namespace app\Http;
 
 use app\Data\UserDTO;
 use app\Service\UserServiceInterface;
+use http\Client\Curl\User;
 
 class UserHttpHandler extends UserHttpHandlerAbstract
 {
@@ -36,6 +37,14 @@ class UserHttpHandler extends UserHttpHandlerAbstract
             $this->handlerProfileProcess($userService);
         }else{
             $this->redirect('login.php');
+        }
+    }
+    public function editProfile(UserServiceInterface $userService, array $formData=[]){
+        $user= $userService->currentUser();
+        if(isset($formData['edit'])){
+            $this->handlerEditProfileProcess($userService,$formData);
+        }else{
+            $this->render('users/editProfile',$user);
         }
     }
 
@@ -69,6 +78,16 @@ class UserHttpHandler extends UserHttpHandlerAbstract
     {
         $user = $userService->currentUser();
         $this->render('users/profile',$user);
+    }
+
+    private function handlerEditProfileProcess(UserServiceInterface $userService, array $formData)
+    {
+        /** @var UserDTO  $user */
+        $user = $this->dataBinder->bind($formData,UserDTO::class);
+
+        $userService->edit($user,$formData['confirm_password']);
+        $this->redirect('profile.php');
+
     }
 
 

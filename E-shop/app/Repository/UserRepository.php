@@ -38,7 +38,17 @@ class UserRepository implements UserRepositoryInterface
 
     public function update($id, UserDTO $user): bool
     {
-        // TODO: Implement update() method.
+       $this->db->query("UPDATE users SET username = ? , password = ? , first_name = ? , last_name = ? , born_on = ?
+                                 WHERE id = ?")
+           ->execute([
+                        $user->getUsername(),
+                        $user->getPassword(),
+                        $user->getFirstName(),
+                        $user->getLastName(),
+                        $user->getBornOn(),
+                        $id]);
+       return true;
+
     }
 
     public function findOneById($id): ?UserDTO
