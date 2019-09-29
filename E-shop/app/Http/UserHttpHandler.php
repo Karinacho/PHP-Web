@@ -26,11 +26,17 @@ class UserHttpHandler extends UserHttpHandlerAbstract
     public function index(UserServiceInterface $userService){
        if($userService->isLogged()){
            $this->handlerIndexProcess($userService);
-           echo 'e';
-           exit;
+
        }else{
            $this->render('home/index');
        }
+    }
+    public function profile(UserServiceInterface $userService){
+        if($userService->isLogged()){
+            $this->handlerProfileProcess($userService);
+        }else{
+            $this->redirect('login.php');
+        }
     }
 
     private function handlerRegisterProcess(UserServiceInterface $userService,array $formData)
@@ -49,7 +55,7 @@ class UserHttpHandler extends UserHttpHandlerAbstract
         if($userService->login($formData['username'], $formData['password'])!== null){
             $this->redirect('index.php');
         }else{
-           $this->render('users/login',null,['Username does not exist or password mismatch']);
+            $this->render('users/login',null,['Username does not exist or password mismatch']);
         }
     }
 
@@ -57,6 +63,12 @@ class UserHttpHandler extends UserHttpHandlerAbstract
     {
         $user = $userService->currentUser();
         $this->render('home/index',$user);
+    }
+
+    private function handlerProfileProcess(UserServiceInterface $userService)
+    {
+        $user = $userService->currentUser();
+        $this->render('users/profile',$user);
     }
 
 

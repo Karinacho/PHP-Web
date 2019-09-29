@@ -52,10 +52,12 @@ class UserService implements UserServiceInterface
         return $user;
     }
     public function isLogged():bool{
-        if($_SESSION['id']){
-            return true;
+
+
+        if(!array_key_exists('id',$_SESSION)){
+            return false;
         }
-        return false;
+        return true;
     }
 
     public function currentUser(): ?UserDTO
