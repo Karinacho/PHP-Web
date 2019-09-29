@@ -10,4 +10,8 @@ $db = new \Database\PDODatabase($pdo);
 $userRepository = new \app\Repository\UserRepository($db);
 $httpHandler = new \app\Http\UserHttpHandler($template,$dataBinder);
 $userService = new \app\Service\UserService($userRepository);
-
+$productRepository= new \app\Repository\ProductRepository($db);
+$productHttpHandler = new \app\Http\ProductHttpHandler($template,$dataBinder);
+$productService = new \app\Service\ProductService($productRepository);
+$categoryRepository = new \app\Repository\CategoryRepository($db);
+$categoryService = new \app\Service\CategoryService($categoryRepository);

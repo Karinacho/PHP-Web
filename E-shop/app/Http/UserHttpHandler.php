@@ -5,10 +5,11 @@ namespace app\Http;
 
 
 use app\Data\UserDTO;
+use app\Service\ProductServiceInterface;
 use app\Service\UserServiceInterface;
 use http\Client\Curl\User;
 
-class UserHttpHandler extends UserHttpHandlerAbstract
+class UserHttpHandler extends HttpHandlerAbstract
 {
     public function register(UserServiceInterface $userService, array $formData=[]){
         if(isset($formData['register'])){
@@ -24,12 +25,14 @@ class UserHttpHandler extends UserHttpHandlerAbstract
             $this->render('users/login');
         }
     }
-    public function index(UserServiceInterface $userService){
+    public function index(UserServiceInterface $userService,ProductServiceInterface $productService){
        if($userService->isLogged()){
-           $this->handlerIndexProcess($userService);
+           $this->handlerIndexProcess($userService,$productService);
 
        }else{
-           $this->render('home/index');
+           $newProducts = $productService->newProducts();
+
+           $this->render('home/index',null,$newProducts);
        }
     }
     public function profile(UserServiceInterface $userService){
@@ -68,10 +71,12 @@ class UserHttpHandler extends UserHttpHandlerAbstract
         }
     }
 
-    private function handlerIndexProcess(UserServiceInterface $userService)
+    private function handlerIndexProcess(UserServiceInterface $userService,ProductServiceInterface $productService)
     {
+        $newProducts = $productService->newProducts();
+
         $user = $userService->currentUser();
-        $this->render('home/index',$user);
+        $this->render('home/index', $user, $newProducts);
     }
 
     private function handlerProfileProcess(UserServiceInterface $userService)

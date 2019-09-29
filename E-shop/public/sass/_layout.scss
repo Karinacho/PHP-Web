@@ -46,9 +46,14 @@ nav.navbar{
     margin-left: auto;
   }
 }
+main.main-content h4{
+  text-align: center;
+  margin-bottom: 1em;
+}
 div.main-banners{
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  margin-bottom:2em;
   h2.centered{
     color:white;
 
@@ -81,6 +86,39 @@ div.main-banners{
     top:38%;
   }
 
+}
+div.new-products{
+  display:flex;
+
+  height:400px;
+}
+div.product{
+height:200px;
+  flex: 0 0 20%;
+
+  span{
+    height: 100%;
+    display:block;
+    position:relative;
+    overflow:hidden;
+
+  }
+
+ div.product-info{
+
+ }
+  img{
+    width:100%;
+    height:auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+  img.landscape{
+    width:auto;
+    height:100%;
+  }
 
 }
 div.profile{
